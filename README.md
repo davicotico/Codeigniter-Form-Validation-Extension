@@ -11,7 +11,7 @@ This is a extension library from Form_validation
 * Extends Validators (Easy and fast)
 
 # How to use
-Enjoy the news methods added:
+Enjoy the new methods added:
 ```
 $this->form_validation->set_success_delimiters('<p style="color: green">', '</p>');
 $this->form_validation->set_redirect('welcome/index');
@@ -19,6 +19,7 @@ $this->form_validation->set_success_message('Dados corretos');
 $this->form_validation->repopulate_all_except(array('password', 'passconf'));
 ```
 Use the 'execute' method for validate
+
 execute($success_callback, $error_callback);
 ```
 $this->form_validation->execute(function(){ 
