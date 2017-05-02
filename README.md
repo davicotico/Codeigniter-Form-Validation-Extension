@@ -31,33 +31,39 @@ $this->form_validation->execute(function(){
 # Options
 #### set_success_message($text)
 * **Parameters:**
+
 string $text - Success message
 
 Setting the success message
 #### set_success_delimiters($open, $close)
 * **Parameters:**
+
 string $open - Open delimiter
 string $close - Close delimiter
 
 Sets the default prefix and suffix for success message
 #### set_redirect($redirect)
 * **Parameters:**
+
 string $redirect - URI/URL to redirect
 
 Redirect after execute validation
 #### repopulate_all_except(array $array)
 * **Parameters:**
+
 array $array Associative array with the fields to exclude
 
 Exclude Fields to re-populate
 #### execute(callable $success_cb, callable $error_cb = NULL)
 * **Parameters:**
+
 callable $success_cb Successfull callback
 callable $error_cb Error callback
 
 Run the validation
 #### get_message()
 * **Return:**
+
 string The message (Html code)
 
 Get the validation message
