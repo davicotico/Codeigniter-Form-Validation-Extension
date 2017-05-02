@@ -13,7 +13,6 @@ This is a extension library from Form_validation
 # How to use
 Enjoy the new methods added:
 ```php
-<?php
 $this->form_validation->set_success_delimiters('<p style="color: green">', '</p>');
 $this->form_validation->set_redirect('welcome/index');
 $this->form_validation->set_success_message('Dados corretos');
@@ -24,9 +23,9 @@ Use the 'execute' method for validate
 execute($success_callback, $error_callback);
 ```php
 $this->form_validation->execute(function(){ 
-    log_message('debug', "Testing validation OK"); 
+    log_message('debug', "Here save your data. This line will be executed before redirect"); 
 }, function(){
-    log_message('debug', 'Erro notificado');
+    log_message('debug', 'Error. This line will be executed before redirect');
 });
 ```
 # Options
