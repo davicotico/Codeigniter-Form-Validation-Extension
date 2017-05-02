@@ -28,20 +28,21 @@ $this->form_validation->execute(function(){
     log_message('debug', 'Error. This line will be executed before redirect');
 });
 ```
-# Options
+# Class reference
 #### set_success_message($text)
+Setting the success message
 * **Parameters:**
 
 string $text - Success message
 
-Setting the success message
 #### set_success_delimiters($open, $close)
 * **Parameters:**
+
+Sets the default prefix and suffix for success message
 
 string $open - Open delimiter
 string $close - Close delimiter
 
-Sets the default prefix and suffix for success message
 #### set_redirect($redirect)
 * **Parameters:**
 
