@@ -13,6 +13,7 @@ This is a extension library from Form_validation
 # How to use
 Enjoy the new methods added:
 ```php
+<?php
 $this->form_validation->set_success_delimiters('<p style="color: green">', '</p>');
 $this->form_validation->set_redirect('welcome/index');
 $this->form_validation->set_success_message('Dados corretos');
