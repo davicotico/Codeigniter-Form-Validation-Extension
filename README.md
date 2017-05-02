@@ -1,5 +1,4 @@
-# Codeigniter-Form-Validation-Extension
-# Intro
+# Codeigniter Form Validation Extension
 This is a extension library from Form_validation
 ## Features
 * Avoid resend POST vars on validate (Don't worry about F5)
@@ -36,35 +35,35 @@ Setting the success message
 string $text - Success message
 
 #### set_success_delimiters($open, $close)
-* **Parameters:**
-
 Sets the default prefix and suffix for success message
+* **Parameters:**
 
 string $open - Open delimiter
 string $close - Close delimiter
 
 #### set_redirect($redirect)
+Redirect after execute validation
 * **Parameters:**
 
 string $redirect - URI/URL to redirect
 
-Redirect after execute validation
 #### repopulate_all_except(array $array)
+Exclude Fields to re-populate
 * **Parameters:**
 
 array $array Associative array with the fields to exclude
 
-Exclude Fields to re-populate
 #### execute(callable $success_cb, callable $error_cb = NULL)
+Run the validation
 * **Parameters:**
 
 callable $success_cb Successfull callback
 callable $error_cb Error callback
 
-Run the validation
+
 #### get_message()
+Get the validation message
 * **Return:**
 
 string The message (Html code)
 
-Get the validation message
