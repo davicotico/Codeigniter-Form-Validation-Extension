@@ -29,7 +29,7 @@ class MY_Form_validation extends CI_Form_validation
     {
         parent::__construct($rules);
         $this->init();
-        include 'FormValidation/Validators.php';
+        include 'Validators/Validators.php';
         $this->EXT = new Validators($this);
     }
     /**
