@@ -23,7 +23,7 @@ class Welcome extends MX_Controller
     {
         $this->load->library('form_validation');
         $this->form_validation->set_rules('username', 'Username', array(
-            'required', array('isCEP', array($this->form_validation->EXT, 'isCEP'))),
+            'required', array('isCEP', array($this->form_validation->ext, 'isCEP'))),
             array('isCEP'=>'Digitos no cep')
                 );
         $this->form_validation->set_rules('password', 'Password', 'required',
@@ -32,9 +32,7 @@ class Welcome extends MX_Controller
                 array('required' => 'Escreva uma senha no campo %s.', 'matches'=>'Password não coincide'));
         $this->form_validation->set_rules('email', 'Email', 'required');
         $this->form_validation->set_rules('select[]', 'Num', 'required');
-        
         $this->form_validation->set_rules('aceito', 'Aceitar', 'required');
-        
         $this->form_validation->set_error_delimiters('<p style="color: red">', '</p>');
         $this->form_validation->set_success_delimiters('<p style="color: green">', '</p>');
         $this->form_validation->set_redirect('welcome/index');

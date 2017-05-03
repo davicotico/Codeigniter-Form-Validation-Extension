@@ -23,14 +23,14 @@ class MY_Form_validation extends CI_Form_validation
     /**
      * @var Validators Object extensor
      */
-    public $EXT;
+    public $ext;
 
     public function __construct($rules = array())
     {
         parent::__construct($rules);
         $this->init();
         include 'Validators/Validators.php';
-        $this->EXT = new Validators($this);
+        $this->ext = new Validators($this);
     }
     /**
      * Initialize default values
