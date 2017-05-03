@@ -1,7 +1,7 @@
 # Codeigniter Form Validation Extension
-This is a extension library from Form_validation
+This is a extension library of Form_validation
 ## Features
-* Avoid resend POST vars on validate (Don't worry about F5)
+* Avoid resend POST vars on refresh form page (Don't worry about F5)
 * Get Flashmessage for Errors
 * Get Flashmessage for Success
 * Ajax Validation Response
