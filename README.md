@@ -30,6 +30,7 @@ $this->form_validation->execute(function(){
 # Class reference
 #### set_success_message($text)
 Setting the success message
+
 | **Parameters:** | string $text - Success message |
 |-----------------|--------------------------------|
 
