@@ -42,19 +42,19 @@ Sets the default prefix and suffix for success message
 string $open - Open delimiter
 string $close - Close delimiter
 
-#### set_redirect($redirect)
+### set_redirect($redirect)
 Redirect after execute validation
 * **Parameters:**
 
 string $redirect - URI/URL to redirect
 
-#### repopulate_all_except(array $array)
+### repopulate_all_except(array $array)
 Exclude Fields to re-populate
 * **Parameters:**
 
 array $array Associative array with the fields to exclude
 
-#### execute(callable $success_cb, callable $error_cb = NULL)
+### execute(callable $success_cb, callable $error_cb = NULL)
 Run the validation
 * **Parameters:**
 
@@ -62,9 +62,19 @@ callable $success_cb Successfull callback
 callable $error_cb Error callback
 
 
-#### get_message()
+### get_message()
 Get the validation message
 * **Return:**
 
 string The message (Html code)
+### get_values()
+Get Form Values (JSON string) from flashdata
+* **Return:**
+
+string - Json string
+### set_template($template)
+Setting the template message
+* **Parameters:**
+
+string $template - Template string
 
