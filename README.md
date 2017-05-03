@@ -17,9 +17,8 @@ $this->form_validation->set_redirect('welcome/index');
 $this->form_validation->set_success_message('Dados corretos');
 $this->form_validation->repopulate_all_except(array('password', 'passconf'));
 ```
-Use the 'execute' method for validate
+To validate, use 'execute' method instead of 'run' method
 
-execute($success_callback, $error_callback);
 ```php
 $this->form_validation->execute(function(){ 
     log_message('debug', "Here save your data. This line will be executed before redirect"); 
