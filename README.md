@@ -30,9 +30,8 @@ $this->form_validation->execute(function(){
 # Class reference
 #### set_success_message($text)
 Setting the success message
-* **Parameters:**
-
-string $text - Success message
+| **Parameters:** | string $text - Success message |
+|-----------------|--------------------------------|
 
 #### set_success_delimiters($open, $close)
 Sets the default prefix and suffix for success message
