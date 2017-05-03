@@ -30,50 +30,51 @@ $this->form_validation->execute(function(){
 ### set_success_message($text)
 Setting the success message
 
-* **Parameters:**
+**Parameters:**
 
-string $text - Success message
+* string $text - Success message
 ### set_success_delimiters($open, $close)
 Sets the default prefix and suffix for success message
 
-* **Parameters:**
+**Parameters:**
 
-string $open - Open delimiter
-string $close - Close delimiter
+* string $open - Open delimiter
+* string $close - Close delimiter
 
 ### set_redirect($redirect)
 Redirect after execute validation
-* **Parameters:**
 
-string $redirect - URI/URL to redirect
+**Parameters:**
+
+* string $redirect - URI/URL to redirect
 
 ### repopulate_all_except(array $array)
 Exclude Fields to re-populate
-* **Parameters:**
 
-array $array Associative array with the fields to exclude
+**Parameters:**
+
+* array $array Associative array with the fields to exclude
 
 ### execute(callable $success_cb, callable $error_cb = NULL)
 Run the validation
-* **Parameters:**
 
-callable $success_cb Successfull callback
-callable $error_cb Error callback
+**Parameters:**
+
+* callable $success_cb Successfull callback
+* callable $error_cb Error callback
 
 
 ### get_message()
 Get the validation message
-* **Return:**
 
-string The message (Html code)
+**Return:** string The message (Html code)
 ### get_values()
 Get Form Values (JSON string) from flashdata
-* **Return:**
 
-string - Json string
+**Return:** string - Json string
 ### set_template($template)
 Setting the template message
-* **Parameters:**
 
-string $template - Template string
+**Parameters:**
 
+* string $template - Template string
