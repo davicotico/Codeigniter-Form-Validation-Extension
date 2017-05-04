@@ -187,4 +187,27 @@ class MY_Form_validation extends CI_Form_validation
     {
         $this->template = $template;
     }
+    /**
+     * Load form values
+     * 
+     */
+    public function load_values()
+    {
+        $values = $this->CI->session->flashdata('FV_values');
+        if ($values!==NULL)
+        {
+            $field_data = json_decode($values, TRUE);
+            $this->set_data($field_data);
+        }
+    }
+    /**
+     * Get form value
+     * @param string $field Input name
+     * @param string $default (Optional) Default value
+     * @return mixed Form value
+     */
+    public function get_value($field, $default = '')
+    {
+        return (isset($this->validation_data[$field])) ? $this->validation_data[$field] : $default;
+    }
 }
