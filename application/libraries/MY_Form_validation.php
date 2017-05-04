@@ -210,4 +210,22 @@ class MY_Form_validation extends CI_Form_validation
     {
         return (isset($this->validation_data[$field])) ? $this->validation_data[$field] : $default;
     }
+    /** Helpers
+    if (! function_exists('set_value'))
+{
+    function set_value($field, $default = '')
+    {
+        echo get_instance()->form_validation->get_value($field, $default);
+    }
+}
+
+if (! function_exists('set_checkbox'))
+{
+    function set_checkbox($field, $value)
+    {
+        $array = get_instance()->form_validation->get_value($field, array());
+        echo (in_array($value, $array)) ? 'checked' : '';
+    }
+}
+    */
 }
