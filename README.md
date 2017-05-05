@@ -38,6 +38,9 @@ In order to implement form validation you’ll need two things:
 ### The controller
 
 ```php
+<?php
+class Welcome extends CI_Controller
+{
 public function form()
 {
     $this->load->helper(array('form'));
@@ -67,6 +70,7 @@ public function post()
     }, function(){
         log_message('debug', 'Erro notificado');
     });
+}
 }
 ```
 # Class reference
