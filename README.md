@@ -61,7 +61,7 @@ public function post()
     $this->form_validation->set_rules('select[]', 'Num', 'required');
     $this->form_validation->set_error_delimiters('<p style="color: red">', '</p>');
     $this->form_validation->set_success_delimiters('<p style="color: green">', '</p>');
-    $this->form_validation->set_redirect('welcome/form1');
+    $this->form_validation->set_redirect('welcome/form');
     $this->form_validation->set_success_message('Dados corretos');
     $this->form_validation->repopulate_all_except(array('password', 'passconf'));
     $this->form_validation->execute(function(){ 
