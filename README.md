@@ -37,41 +37,42 @@ In order to implement form validation you’ll need two things:
 ```
 ### The controller
 
-```PHP
+```php
 class Welcome extends CI_Controller
 {
-public function form()
-{
-    $this->load->helper(array('form'));
-    $this->load->library('form_validation');
-    $data['message'] = $this->form_validation->get_message();
-    $this->form_validation->load_values();
-    $this->load->view('myform', $data);
-}
+    public function form()
+    {
+        $this->load->helper(array('form'));
+        $this->load->library('form_validation');
+        $data['message'] = $this->form_validation->get_message();
+        $this->form_validation->load_values();
+        $this->load->view('myform', $data);
+    }
     
-public function post()
-{
-    $this->load->library('form_validation');
-    $this->form_validation->set_rules('username', 'Username', 'required');
-    $this->form_validation->set_rules('password', 'Password', 'required',
-            array('required' => 'Escreva uma senha no campo %s.'));
-    $this->form_validation->set_rules('passconf', 'Password Confirmation', 'required|matches[password]', 
-            array('required' => 'Escreva uma senha no campo %s.', 'matches'=>'Password não coincide'));
-    $this->form_validation->set_rules('email', 'Email', 'required');
-    $this->form_validation->set_rules('select[]', 'Num', 'required');
-    $this->form_validation->set_error_delimiters('<p style="color: red">', '</p>');
-    $this->form_validation->set_success_delimiters('<p style="color: green">', '</p>');
-    $this->form_validation->set_redirect('welcome/form');
-    $this->form_validation->set_success_message('Dados corretos');
-    $this->form_validation->repopulate_all_except(array('password', 'passconf'));
-    $this->form_validation->execute(function(){ 
-        log_message('debug', "Testing validation OK");
-    }, function(){
-        log_message('debug', 'Erro notificado');
-    });
-}
+    public function post()
+    {
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('username', 'Username', 'required');
+        $this->form_validation->set_rules('password', 'Password', 'required',
+                array('required' => 'Escreva uma senha no campo %s.'));
+        $this->form_validation->set_rules('passconf', 'Password Confirmation', 'required|matches[password]', 
+                array('required' => 'Escreva uma senha no campo %s.', 'matches'=>'Password não coincide'));
+        $this->form_validation->set_rules('email', 'Email', 'required');
+        $this->form_validation->set_rules('select[]', 'Num', 'required');
+        $this->form_validation->set_error_delimiters('<p style="color: red">', '</p>');
+        $this->form_validation->set_success_delimiters('<p style="color: green">', '</p>');
+        $this->form_validation->set_redirect('welcome/form');
+        $this->form_validation->set_success_message('Dados corretos');
+        $this->form_validation->repopulate_all_except(array('password', 'passconf'));
+        $this->form_validation->execute(function(){ 
+            log_message('debug', "Testing validation OK");
+        }, function(){
+            log_message('debug', 'Erro notificado');
+        });
+    }
 }
 ```
+
 # Class reference
 ### set_success_message($text)
 Setting the success message
