@@ -14,7 +14,7 @@ We have two alternatives: With ajax validation OR without ajax
 ## Without Ajax
 In order to implement form validation you’ll need two things:
 * A View file containing a form.
-* A controller method to receive and process the submitted data
+* A controller method to receive, process the submitted data and redirect the result message.
 ### The Form
 ```html
 <body>  
@@ -36,6 +36,7 @@ In order to implement form validation you’ll need two things:
 </body>
 ```
 ### The controller
+
 ```php
 public function form()
 {
