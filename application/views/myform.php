@@ -83,6 +83,91 @@
             });
         }
     });
+    
+    /*
+    
+    var frmValues = '<?php echo $values ?>';
+        //$('#frmCadastro').utilForm({data: frmValues});
+        $('#frmCadastro').utilForm('fillForm', frmValues);
+    
+    (function( $ ){
+    var methods = {
+        init : function(options) {
+            var settings = $.extend({
+                data: '',
+                selectorMessage: '#message',
+                errorClass: 'error'
+            }, options );
+            var frmValues = settings.data;
+            methods.fillForm(frmValues);
+            if (this.data('ajax') === 1) {
+                settingAjax(this);
+            }
+            function settingAjax(form) {
+                form.on('submit', function (e) {
+                    e.preventDefault();
+                    var action = form.attr('action');
+                    var data = form.serializeArray();
+                    $.each(data, function (k, v) {
+                        $("[name='" + v.name + "']").removeClass(settings.errorClass);
+                    });
+                    $.post(action, data, function (result){
+                        var msg = '';
+                        if (result.hasOwnProperty('valid')){
+                            msg = result.text;
+                        } else {
+                            $.each(result, function (k, v){
+                                $("[name='" + k + "']").addClass(settings.errorClass);
+                                msg += '<p>' + v + '</p>';
+                            });
+                        }
+                        $(settings.selectorMessage).html(msg).hide().fadeIn('slow');
+                    });
+                });
+            }
+        },
+        fillForm : function(values) {    
+            if (values === '')
+                return;
+            var data = jQuery.parseJSON(values);
+            $.each(data, function (name, val) {
+                var $el = $("[name='" + name + "']");
+                if ($.isArray(val)) {
+                    var selector = "[name='" + name + "\\[\\]']";
+                    var $el = $(selector);
+                }
+                var type = $el.attr('type');
+                switch (type) {
+                    case 'checkbox':
+                        if ($.isArray(val)) {
+                            $el.each(function () {
+                                var state = ($.inArray($(this).val(), val) !== -1);
+                                $(this).prop('checked', state);
+                            });
+                        } else {
+                            $el.attr('checked', 'checked');
+                        }
+                        break;
+                    case 'radio':
+                        $el.filter('[value="' + val + '"]').attr('checked', 'checked');
+                        break;
+                    default:
+                        $el.val(val);
+                }
+            });
+        }
+    };
+    $.fn.utilForm = function(methodOrOptions) {
+        if ( methods[methodOrOptions] ) {
+            return methods[ methodOrOptions ].apply( this, Array.prototype.slice.call( arguments, 1 ));
+        } else if ( typeof methodOrOptions === 'object' || ! methodOrOptions ) {
+            return methods.init.apply( this, arguments );
+        } else {
+            $.error( 'Method ' +  methodOrOptions + ' does not exist on jQuery.utilform' );
+        }    
+    };
+})( jQuery );
+    */
 </script>
 </body>
 </html>
