@@ -10,7 +10,8 @@ This is a extension library of Form_validation
 * Extends Validators (Easy and fast)
 
 # How to use
-## No ajax
+We have two alternatives: With ajax validation OR without ajax
+## Without Ajax
 In order to implement form validation you’ll need two things:
 * A View file containing a form.
 * A controller method to receive and process the submitted data
