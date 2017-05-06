@@ -4,23 +4,23 @@
  */
 class Welcome extends MX_Controller
 {
-	public function form()
-	{
+    public function form()
+    {
         $this->load->library('form_validation');
         $tpl = "<div class=\"alert alert-{type}\" role=\"alert\">{message}</div>";
         $this->form_validation->set_template($tpl, array('error'=>'danger'));
         $data['message'] = $this->form_validation->get_message();
         $this->form_validation->load_values();
         $this->load->view('myform', $data);
-	}
+    }
     public function formAjax()
-	{
+    {
         $this->load->helper(array('form'));
         $this->load->library('form_validation');
         $data['values']  = $this->form_validation->get_values();
         $data['ajax'] = TRUE;
         $this->load->view('myformAjax', $data);
-	}
+    }
     /**
 	 * 
 	 */
