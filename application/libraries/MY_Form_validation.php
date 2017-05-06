@@ -30,6 +30,7 @@ class MY_Form_validation extends CI_Form_validation
         parent::__construct($rules);
         $this->init();
         include 'Validators/Validators.php';
+        require_once 'Validators/form_helper.php';
         $this->ext = new Validators($this);
     }
     /**
@@ -37,11 +38,13 @@ class MY_Form_validation extends CI_Form_validation
      */
     protected function init()
     {
+        $this->CI->load->library('session');
+        $this->CI->load->helper('url');
         $this->successMessage = 'OK!';
         $this->ajaxResponse = array();
         $this->set_success_delimiters('<p>', '</p>');
-        $this->template = '<div class="{type}">{body}</div>';
-        $this->redirect = base_url();
+        $this->template = '';
+        $this->redirect = $this->CI->config->item('base_url');
     }
     /**
      * Setting the success message
@@ -125,7 +128,7 @@ class MY_Form_validation extends CI_Form_validation
         {
             $input = $this->getPostExcluding();
             $this->CI->session->set_flashdata('FV_values', json_encode($input));
-            $this->CI->session->set_flashdata('FV_message', array('type'=>$msgType, 'body'=>$message));
+            $this->CI->session->set_flashdata('FV_message', array('type'=>$msgType, 'message'=>$message));
             log_message('debug', "Validation executed at MY_Form_validation.php and redirect to: {$this->redirect}");
             redirect($this->redirect);
         }
@@ -158,18 +161,15 @@ class MY_Form_validation extends CI_Form_validation
         return ($values===NULL) ? '' : $values;
     }
     /**
-     * Get the validation message
-     * @return string The message (Html code)
+     * @param string $template Template string
+     * @param array $typeClass (Optional) CSS Class to replace in template
      */
-    public function get_message()
+    public function set_template($template, $typeClass = NULL)
     {
-        $data = $this->getArrayMessage();
-        if (empty($data))
-        {
-            return '';
-        }
-        $this->CI->load->library('parser');
-        return $this->CI->parser->parse_string($this->template, $data, TRUE);
+        $this->template['html'] = $template;
+        $this->template['error']   = isset($typeClass['error']) ? $typeClass['error'] : 'error';
+        $this->template['success'] = isset($typeClass['success']) ? $typeClass['success'] : 'success';
+        
     }
     /**
      * Get array message from flashdata
@@ -181,12 +181,22 @@ class MY_Form_validation extends CI_Form_validation
         return ($msg===NULL) ? array() : $msg;
     }
     /**
-     * @param string $template Template string
+     * Get the validation message
+     * @return string The message (Html code)
      */
-    public function set_template($template)
+    public function get_message()
     {
-        $this->template = $template;
+        $data = $this->getArrayMessage();
+        if (empty($data))
+        {
+            return '';
+        }
+        $data['type'] = $this->template[$data['type']];
+        $str = strtr($this->template['html'], array('{type}'=>$data['type'], '{message}'=>$data['message']));
+        return $str;
     }
+    
+    
     /**
      * Load form values
      * 
@@ -210,22 +220,4 @@ class MY_Form_validation extends CI_Form_validation
     {
         return (isset($this->validation_data[$field])) ? $this->validation_data[$field] : $default;
     }
-    /** Helpers
-    if (! function_exists('set_value'))
-{
-    function set_value($field, $default = '')
-    {
-        echo get_instance()->form_validation->get_value($field, $default);
-    }
-}
-
-if (! function_exists('set_checkbox'))
-{
-    function set_checkbox($field, $value)
-    {
-        $array = get_instance()->form_validation->get_value($field, array());
-        echo (in_array($value, $array)) ? 'checked' : '';
-    }
-}
-    */
 }

@@ -1,173 +1,49 @@
 <html>
-<head>
-<title>My Form</title>
-</head>
-<style>
-.error {border: red solid 1px;}
-</style>
-<body>  
-<?php  echo $message; ?>
-<div id="message" style="display: none;"></div>
-<?php echo form_open('welcome/post', array('method'=>'post', 'id'=>'frmCadastro', 'data-ajax'=>$ajax)); ?>
-<h5>Username</h5>
-<input type="text" name="username" id="username" value="" size="50" />
-<h5>Password</h5>
-<input type="password" name="password" id="password" value="" size="50" />
-<h5>Password Confirm</h5>
-<input type="password" name="passconf" id="passconf" value="" size="50" />
-<h5>Email Address</h5>
-<input type="email" name="email" id="email" value="" size="50" />
-<label><input type="checkbox" name="select[]" value="1"> 1</label>
-<label><input type="checkbox" name="select[]" value="2"> 2</label>
-<label><input type="checkbox" name="select[]" value="3"> 3</label>
-<br><label><input type="checkbox" name="aceito" value="1"> Aceito</label>
-<div><input type="submit" value="Submit" /></div>
-<?php echo form_close() ?>
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function(){
-        var frmValues = '<?php echo $values ?>';
-        fillForm(frmValues);
-        if ($('#frmCadastro').data('ajax')===1){
-            settingAjax();
-        }
-        function settingAjax(){
-            $('#frmCadastro').on('submit', function(e){
-                e.preventDefault();
-                var action = $(this).attr('action');
-                var data = $(this).serializeArray();
-                $.each(data, function(k, v){
-                    $("[name='"+v.name+"']").removeClass('error');
-                });
-                $.post(action, data, function(result){
-                    var msg = '';
-                    if (result.hasOwnProperty('valid')){
-                        msg = result.text;
-                    } else{
-                        $.each(result, function(k, v){
-                            $("[name='"+k+"']").addClass('error');
-                            msg += '<p>'+v+'</p>';
-                        });
-                    }
-                    $('#message').html(msg).hide().fadeIn('slow');
-                });
-            });
-        }
-        function fillForm(values){
-            if (values === '') return;
-            var data = jQuery.parseJSON(values);
-            $.each(data, function(name, val){
-                var $el = $("[name='"+name+"']");
-                if ($.isArray(val)){
-                    var selector = "[name='"+name+"\\[\\]']";
-                    var $el = $(selector);
-                }
-                var type = $el.attr('type');
-                switch(type){
-                case 'checkbox':
-                    if ($.isArray(val)){
-                        $el.each(function(){
-                            var state = ($.inArray($(this).val(), val)!==-1);
-                            $(this).prop('checked', state);
-                        });
-                    } else{
-                        $el.attr('checked', 'checked');
-                    }
-                    break;
-                case 'radio':
-                    $el.filter('[value="'+val+'"]').attr('checked', 'checked');
-                    break;
-                default:
-                    $el.val(val);
-                }
-            });
-        }
-    });
-    
-    /*
-    
-    var frmValues = '<?php echo $values ?>';
-        //$('#frmCadastro').utilForm({data: frmValues});
-        $('#frmCadastro').utilForm('fillForm', frmValues);
-    
-    (function( $ ){
-    var methods = {
-        init : function(options) {
-            var settings = $.extend({
-                data: '',
-                selectorMessage: '#message',
-                errorClass: 'error'
-            }, options );
-            var frmValues = settings.data;
-            methods.fillForm(frmValues);
-            if (this.data('ajax') === 1) {
-                settingAjax(this);
-            }
-            function settingAjax(form) {
-                form.on('submit', function (e) {
-                    e.preventDefault();
-                    var action = form.attr('action');
-                    var data = form.serializeArray();
-                    $.each(data, function (k, v) {
-                        $("[name='" + v.name + "']").removeClass(settings.errorClass);
-                    });
-                    $.post(action, data, function (result){
-                        var msg = '';
-                        if (result.hasOwnProperty('valid')){
-                            msg = result.text;
-                        } else {
-                            $.each(result, function (k, v){
-                                $("[name='" + k + "']").addClass(settings.errorClass);
-                                msg += '<p>' + v + '</p>';
-                            });
-                        }
-                        $(settings.selectorMessage).html(msg).hide().fadeIn('slow');
-                    });
-                });
-            }
-        },
-        fillForm : function(values) {    
-            if (values === '')
-                return;
-            var data = jQuery.parseJSON(values);
-            $.each(data, function (name, val) {
-                var $el = $("[name='" + name + "']");
-                if ($.isArray(val)) {
-                    var selector = "[name='" + name + "\\[\\]']";
-                    var $el = $(selector);
-                }
-                var type = $el.attr('type');
-                switch (type) {
-                    case 'checkbox':
-                        if ($.isArray(val)) {
-                            $el.each(function () {
-                                var state = ($.inArray($(this).val(), val) !== -1);
-                                $(this).prop('checked', state);
-                            });
-                        } else {
-                            $el.attr('checked', 'checked');
-                        }
-                        break;
-                    case 'radio':
-                        $el.filter('[value="' + val + '"]').attr('checked', 'checked');
-                        break;
-                    default:
-                        $el.val(val);
-                }
-            });
-        }
-    };
-    $.fn.utilForm = function(methodOrOptions) {
-        if ( methods[methodOrOptions] ) {
-            return methods[ methodOrOptions ].apply( this, Array.prototype.slice.call( arguments, 1 ));
-        } else if ( typeof methodOrOptions === 'object' || ! methodOrOptions ) {
-            return methods.init.apply( this, arguments );
-        } else {
-            $.error( 'Method ' +  methodOrOptions + ' does not exist on jQuery.utilform' );
-        }    
-    };
-})( jQuery );
-    */
-</script>
-</body>
+    <head>
+        <title>Form Validation Improved Demo 1 - Without ajax</title>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    </head>
+    <body>  
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <?php echo $message; ?>
+                    <?php echo form_open('welcome/post', array('method' => 'post', 'id' => 'frmCadastro')); ?>
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" name="username" id="username" class="form-control" size="50" value="<?php setValue('username') ?>">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="password" class="form-control" size="50">
+                    </div>
+                    <div class="form-group">
+                        <label for="passconf">Password Confirm</label>
+                        <input type="password" name="passconf" id="passconf" size="50" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" name="email" id="email" class="form-control" size="50" value="<?php setValue('email') ?>">
+                    </div>
+                    <h4>Subscribe to:</h4>
+                    <div class="checkbox">
+                    <label><input type="checkbox" name="select[]" value="1" <?php setCheckbox('select', '1') ?>> Newsletter</label>
+                    <label><input type="checkbox" name="select[]" value="2" <?php setCheckbox('select', '2') ?>> Promotions</label>
+                    <label><input type="checkbox" name="select[]" value="3" <?php setCheckbox('select', '3') ?>> Free stuff</label>
+                    </div>
+                    <h4>Accept the terms?</h4>
+                    <div class="checkbox">
+                        <label><input type="checkbox" name="accept" value="1" <?php setCheckbox('accept', '1') ?>> I accept</label>
+                    </div>
+                    <div><button type="submit" id="btnSend" class="btn btn-success">Send</button></div>
+                    <?php echo form_close() ?>
+                </div>
+            </div>
+        </div>
+    </body>
 </html>
