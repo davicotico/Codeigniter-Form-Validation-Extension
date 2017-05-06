@@ -136,9 +136,16 @@ Get the validation message
 Get Form Values (JSON string) from flashdata
 
 **Return:** string - Json string
-### set_template($template)
+### set_template($template, $typeClass = NULL)
 Setting the template message
 
 **Parameters:**
 
 * string $template - Template string
+* array $typeClass - (Optional) CSS Class to replace in template
+
+# Helpers included
+### setValue($field, $default = '')
+Echoes the value for input field. Use in a view file. 
+### setCheckbox($field, $value)
+Echoes the 'checked' for input type checkbox. When the value is present in form values, display "checked". Use in a view file. 
