@@ -144,7 +144,7 @@ Setting the template message
 * string $template - Template string
 * array $typeClass - (Optional) CSS Class to replace in template
 
-# Helpers included
+## Helpers included
 ### setValue($field, $default = '')
 Echoes the value for input field. Use in a view file. 
 ### setCheckbox($field, $value)
