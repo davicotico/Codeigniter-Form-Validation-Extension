@@ -146,6 +146,14 @@ Setting the template message
 
 ## Helpers included
 ### setValue($field, $default = '')
+**Parameters:**
+
+* string $field - Input name
+* string $default - (Optional) Default value
 Echoes the value for input field. Use in a view file. 
 ### setCheckbox($field, $value)
+**Parameters:**
+
+* string $field - Input name
+* string $value - This value is setting? .. So, Checked
 Echoes the 'checked' for input type checkbox. When the value is present in form values, display "checked". Use in a view file. 
