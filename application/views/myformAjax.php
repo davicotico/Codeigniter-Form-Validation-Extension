@@ -54,6 +54,32 @@
             $(document).ready(function () {
                 var frmValues = '<?php echo $values ?>';
                 $('#frmCadastro').utilForm({data: frmValues, errorClass: 'alert-danger', successClass: 'alert-success'});
+                /* INCLUDE THIS STATIC FUNCTIONS 
+                setCheckbox: function(name, values){
+            var $el = $("[name='" + name + "']");
+            var data  = JSON.parse(values);
+            if ($.isArray(data)){
+                var selector = "[name='" + name + "\\[\\]']";
+                $el = $(selector);
+                $el.each(function(){
+                    var val = $(this).val();
+                    var state = (methods.inArray(val, data));
+                    $(this).attr('checked', state);
+                });
+            } else{
+                var state = (data == $el.val());
+                $el.attr('checked', state);
+            }
+        },
+        inArray: function(val, array){
+            for (var i = 0, len = array.length; i < len; i++){
+                if (array[i]==val){
+                    return true;
+                }
+            }
+            return false;
+        }
+                */
             });
         </script>
     </body>
