@@ -53,7 +53,7 @@
         <script type="text/javascript">
             $(document).ready(function () {
                 var frmValues = '<?php echo $values ?>';
-                $('#frmCadastro').utilForm({data: frmValues, errorClass: 'alert-danger', successClass: 'alert-success'});
+                $('#frmCadastro').formHelper({data: frmValues, errorClass: 'alert-danger', successClass: 'alert-success'});
             });
         </script>
     </body>
