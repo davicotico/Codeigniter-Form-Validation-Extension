@@ -95,7 +95,7 @@ class MY_Form_validation extends CI_Form_validation
      * @param callable $success_cb Successfull callback
      * @param callable $error_cb Error callback
      */
-    public function execute(callable $success_cb, callable $error_cb = NULL)
+    public function validate(callable $success_cb, callable $error_cb = NULL)
     {
         $isAjax = $this->CI->input->is_ajax_request();
         $this->isValid = $this->run();
