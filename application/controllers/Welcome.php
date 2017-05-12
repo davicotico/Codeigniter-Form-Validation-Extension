@@ -41,7 +41,7 @@ class Welcome extends MX_Controller
         $this->form_validation->set_success_message('Congratulations');
         $this->form_validation->add_success_json('test', '123'); // for ajax request
         $this->form_validation->repopulate_all_except(array('password', 'passconf'));
-        $this->form_validation->execute(function(){ 
+        $this->form_validation->validate(function(){ 
             log_message('debug', "Success: This was executed before the redirect (or before the response ajax)");
         }, function(){
             log_message('debug', 'Error: This was executed before the redirect (or before the response ajax)');
