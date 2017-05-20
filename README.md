@@ -63,6 +63,14 @@ Setting the template message
 * string $template - Template string
 * array $typeClass - (Optional) CSS Class to replace in template
 
+### addSuccessJsonVar($key, $value)
+Add variable on success json response (Only for ajax request)
+
+**Parameters:**
+
+* string $key - Key name
+* string $value - Value
+
 ## Helpers included
 ### setValue($field, $default = '')
 Echoes the value for input field. Use in a view file. 
