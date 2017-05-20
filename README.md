@@ -11,9 +11,34 @@ This is a extension library of Form_validation
 
 ## How to use
 ### Without ajax
+** The Form **
+
+Create a view file (using the functions to repopulate)
+
+[The Form view](https://github.com/davicotico/Codeigniter-Form-Validation-Extension/blob/master/application/views/myform.php)
+
+Create the controller method
+
 [The Form controller method](https://github.com/davicotico/Codeigniter-Form-Validation-Extension/blob/master/application/controllers/Welcome.php#L7)
 
-[The view](https://github.com/davicotico/Codeigniter-Form-Validation-Extension/blob/master/application/views/myform.php)
+** The validation **
+
+Create a controller method for validate your data (and save in database)
+
+[The post controller method](https://github.com/davicotico/Codeigniter-Form-Validation-Extension/blob/master/application/controllers/Welcome.php#L23)
+### With Ajax
+** The Form **
+
+Create a view file. 
+
+[The Form view](https://github.com/davicotico/Codeigniter-Form-Validation-Extension/blob/master/application/views/myformAjax.php)
+
+Create the controller method
+[The form controller](https://github.com/davicotico/Codeigniter-Form-Validation-Extension/blob/master/application/controllers/Welcome.php#L16)
+
+** The validation **
+
+
 
 # Class reference
 ### setSuccessMessage($text)
