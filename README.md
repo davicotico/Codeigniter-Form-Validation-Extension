@@ -12,6 +12,7 @@ This is a extension library of Form_validation
 ## How to use
 ### Without ajax
 [The Form controller method](https://github.com/davicotico/Codeigniter-Form-Validation-Extension/blob/master/application/controllers/Welcome.php#L7)
+
 [The view](https://github.com/davicotico/Codeigniter-Form-Validation-Extension/blob/master/application/views/myform.php)
 
 # Class reference
