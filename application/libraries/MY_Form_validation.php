@@ -1,25 +1,21 @@
 <?php
+
 /**
  * Form Validation Extension Library for Codeigniter
  * @author David Ticona Saravia <david.ticona.saravia@gmail.com>
- * Features:
- * - Avoid resend POST vars on validate (Don't worry about F5)
- * - Get Flashmessage for Errors
- * - Get Flashmessage for Success
- * - Ajax Validation Response
- * - Customize Ajax success response
- * - Customize Success Message
- * - Extends Validators (Easy and fast)
  * 
  */
 class MY_Form_validation extends CI_Form_validation
 {
+
     protected $redirect;
     protected $excludeInputs;
+    protected $repopulatedInputs;
     protected $successMessage;
     protected $success_delimiters;
     protected $ajaxResponse;
     protected $template;
+
     /**
      * @var Validators Object extensor
      */
@@ -33,6 +29,7 @@ class MY_Form_validation extends CI_Form_validation
         require_once 'Validators/form_helper.php';
         $this->ext = new Validators($this);
     }
+
     /**
      * Initialize default values
      */
@@ -42,57 +39,62 @@ class MY_Form_validation extends CI_Form_validation
         $this->CI->load->helper('url');
         $this->successMessage = 'OK!';
         $this->ajaxResponse = array();
-        $this->set_success_delimiters('<p>', '</p>');
+        $this->setSuccessDelimiters('<p>', '</p>');
         $this->template = '';
         $this->redirect = $this->CI->config->item('base_url');
     }
+
     /**
      * Setting the success message
      * @param string $text Success message
      */
-    public function set_success_message($text)
+    public function setSuccessMessage($text)
     {
         $this->successMessage = $text;
     }
+
     /**
      * Tag delimiters for success message
      * @param string $open Open delimiter
      * @param string $close Close delimiter
      */
-    public function set_success_delimiters($open, $close)
+    public function setSuccessDelimiters($open, $close)
     {
         $this->success_delimiters['open'] = $open;
-        $this->success_delimiters['close']= $close;
+        $this->success_delimiters['close'] = $close;
     }
+
     /**
-     * Attach variables on success json response (Only for ajax request)
+     * Add variable on success json response (Only for ajax request)
      * @param string $key Json Key
      * @param string $value Json value
      */
-    public function add_success_json($key, $value)
+    public function addSuccessJsonVar($key, $value)
     {
         $this->ajaxResponse[$key] = $value;
     }
+
     /**
      * Redirect before execute validation
      * @param string $redirect URI/URL to redirect
      */
-    public function set_redirect($redirect)
+    public function setRedirect($redirect)
     {
         $this->redirect = $redirect;
     }
+
     /**
      * Exclude Fields to repopulate
      * @param array $array Associative array win the fields to exclude
      */
-    public function repopulate_all_except(array $array)
+    public function repopulateAllExcept(array $array)
     {
         $this->excludeInputs = $array;
     }
-    
+
     /**
-     * Run the validation
-     * @param callable $success_cb Successfull callback
+     * Validate
+     * @param callable $success_cb Success callback
      * @param callable $error_cb Error callback
      */
     public function validate(callable $success_cb, callable $error_cb = NULL)
@@ -109,41 +111,48 @@ class MY_Form_validation extends CI_Form_validation
             }
             $message = ($isAjax) ? json_encode($this->error_array()) : $this->error_string();
             $msgType = 'error';
-        }
-        else
+        } else
         {
             call_user_func($success_cb);
-            $this->ajaxResponse['valid'] = TRUE;
-            $this->ajaxResponse['text']  = $this->successMessage;
-            $json = json_encode($this->ajaxResponse);
-            $message = ($isAjax) ? $json : "{$this->success_delimiters['open']}{$this->successMessage}{$this->success_delimiters['close']}";
+            $message = ($isAjax) ? $this->_formatSuccessJson() : "{$this->success_delimiters['open']}{$this->successMessage}{$this->success_delimiters['close']}";
         }
         if ($isAjax)
         {
             header('Content-Type: application/json; charset=utf-8');
             echo $message;
             exit(0);
-        }
-        else
+        } else
         {
-            $input = $this->getPostExcluding();
+            $input = $this->getPostExcluding($this->excludeInputs);
             $this->CI->session->set_flashdata('FV_values', json_encode($input));
-            $this->CI->session->set_flashdata('FV_message', array('type'=>$msgType, 'message'=>$message));
-            log_message('debug', "Validation executed at MY_Form_validation.php and redirect to: {$this->redirect}");
+            $this->CI->session->set_flashdata('FV_message', array('type' => $msgType, 'message' => $message));
+            log_message('info', "Validation executed at MY_Form_validation.php and redirect to: {$this->redirect}");
             redirect($this->redirect);
         }
     }
+
+    /**
+     * @return string Json string for ajax response
+     */
+    private function _formatSuccessJson()
+    {
+        $this->ajaxResponse['valid'] = TRUE;
+        $this->ajaxResponse['text'] = $this->successMessage;
+        return json_encode($this->ajaxResponse);
+    }
+
     /**
      * Get form post values excluding the setting elements
+     * @param array $excludeInputs Don't repopulate this inputs
      * @return array Associative array
      */
-    protected function getPostExcluding()
+    protected function getPostExcluding($excludeInputs)
     {
-        if (empty($this->excludeInputs))
+        if (empty($excludeInputs))
         {
             return $this->CI->input->post(NULL, TRUE);
         }
-        $except = $this->excludeInputs;
+        $except = $excludeInputs;
         $post = $this->CI->input->post(NULL, TRUE);
         foreach ($except as $k)
         {
@@ -151,26 +160,28 @@ class MY_Form_validation extends CI_Form_validation
         }
         return $post;
     }
+
     /**
      * Get Form Values (JSON string) from flashdata
      * @return string Json string
      */
-    public function get_values()
+    public function getValues()
     {
         $values = $this->CI->session->flashdata('FV_values');
-        return ($values===NULL) ? '' : $values;
+        return ($values === NULL) ? '' : $values;
     }
+
     /**
      * @param string $template Template string
      * @param array $typeClass (Optional) CSS Class to replace in template
      */
-    public function set_template($template, $typeClass = NULL)
+    public function setTemplate($template, $typeClass = NULL)
     {
         $this->template['html'] = $template;
-        $this->template['error']   = isset($typeClass['error']) ? $typeClass['error'] : 'error';
+        $this->template['error'] = isset($typeClass['error']) ? $typeClass['error'] : 'error';
         $this->template['success'] = isset($typeClass['success']) ? $typeClass['success'] : 'success';
-        
     }
+
     /**
      * Get array message from flashdata
      * @return array Array with data message
@@ -178,13 +189,14 @@ class MY_Form_validation extends CI_Form_validation
     private function getArrayMessage()
     {
         $msg = $this->CI->session->flashdata('FV_message');
-        return ($msg===NULL) ? array() : $msg;
+        return ($msg === NULL) ? array() : $msg;
     }
+
     /**
      * Get the validation message
      * @return string The message (Html code)
      */
-    public function get_message()
+    public function getMessage()
     {
         $data = $this->getArrayMessage();
         if (empty($data))
@@ -192,32 +204,33 @@ class MY_Form_validation extends CI_Form_validation
             return '';
         }
         $data['type'] = $this->template[$data['type']];
-        $str = strtr($this->template['html'], array('{type}'=>$data['type'], '{message}'=>$data['message']));
+        $str = strtr($this->template['html'], array('{type}' => $data['type'], '{message}' => $data['message']));
         return $str;
     }
-    
-    
+
     /**
      * Load form values
      * 
      */
-    public function load_values()
+    public function loadValues()
     {
         $values = $this->CI->session->flashdata('FV_values');
-        if ($values!==NULL)
+        if ($values !== NULL)
         {
-            $field_data = json_decode($values, TRUE);
-            $this->set_data($field_data);
+            $inputData = json_decode($values, TRUE);
+            $this->repopulatedInputs = $inputData;
         }
     }
+
     /**
      * Get form value
      * @param string $field Input name
      * @param string $default (Optional) Default value
      * @return mixed Form value
      */
-    public function get_value($field, $default = '')
+    public function getValue($field, $default = '')
     {
-        return (isset($this->validation_data[$field])) ? $this->validation_data[$field] : $default;
+        return (isset($this->repopulatedInputs[$field])) ? $this->repopulatedInputs[$field] : $default;
     }
+
 }

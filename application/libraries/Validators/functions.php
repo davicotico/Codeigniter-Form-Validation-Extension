@@ -6,7 +6,7 @@ function test1($p1, $p2)
     echo "Test 1 {$p1}, {$p2}";
 }
 
-function isCEP($value)
+function isCNPJ($value)
 {
     if (! ctype_digit($value))
     {

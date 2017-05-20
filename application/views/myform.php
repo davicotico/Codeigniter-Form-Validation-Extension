@@ -10,7 +10,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="panel panel-primary">
-                        <div class="panel-heading">Register</div>
+                        <div class="panel-heading"><h4>Register</h4></div>
                         <div class="panel-body">
                             <?php echo $message; ?>
                             <?php echo form_open('welcome/post', array('method' => 'post', 'id' => 'frmCadastro')); ?>
@@ -43,6 +43,7 @@
                             <div><button type="submit" id="btnSend" class="btn btn-success">Send</button></div>
                             <?php echo form_close() ?>
                         </div>
+                        <div class="panel-footer"><a href="formAjax"> Go to the form with ajax validation</a></div>
                     </div>
                 </div>
             </div>

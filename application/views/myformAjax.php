@@ -8,8 +8,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <div class="panel panel-success">
-                        <div class="panel-heading">Register</div>
+                    <div class="panel panel-primary">
+                        <div class="panel-heading"><h4>Register (with Ajax validation)</h4></div>
                         <div class="panel-body">
                             <div id="message" class="alert" role="alert"></div>
                             <?php echo form_open('welcome/post', array('method' => 'post', 'id' => 'frmCadastro', 'data-ajax' => 1)); ?>
@@ -42,6 +42,7 @@
                             <div><button type="submit" id="btnSend" class="btn btn-success">Send</button></div>
                             <?php echo form_close() ?>
                         </div>
+                        <div class="panel-footer"><a href="form"> Go to the form without ajax</a></div>
                     </div>
 
                 </div>
@@ -52,8 +53,7 @@
         <script src="<?php echo BASE_URL ?>public/common/formHelper.js"></script>
         <script type="text/javascript">
             $(document).ready(function () {
-                var frmValues = '<?php echo $values ?>';
-                $('#frmCadastro').formHelper({data: frmValues, errorClass: 'alert-danger', successClass: 'alert-success'});
+                $('#frmCadastro').formHelper({errorClass: 'alert-danger', successClass: 'alert-success'});
             });
         </script>
     </body>
