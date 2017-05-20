@@ -11,7 +11,7 @@ This is a extension library of Form_validation
 
 ## How to use
 ### Without ajax
-**The Form**
+#### The Form
 
 Create a view file (using the functions to repopulate)
 
@@ -21,13 +21,15 @@ Create the controller method
 
 [The Form controller method](https://github.com/davicotico/Codeigniter-Form-Validation-Extension/blob/master/application/controllers/Welcome.php#L7)
 
-**The validation**
+#### The validation
 
 Create a controller method for validate your data (and save in database)
 
 [The post controller method](https://github.com/davicotico/Codeigniter-Form-Validation-Extension/blob/master/application/controllers/Welcome.php#L23)
 ### With Ajax
-**The Form**
+#### The Form
+
+**Requirements:** The JQuery plugin [formHelper](https://github.com/davicotico/jQuery-formHelper)
 
 Create a view file. 
 
