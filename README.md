@@ -9,6 +9,10 @@ This is a extension library of Form_validation
 * Customize Success Message
 * Extends Validators (Easy and fast)
 
+## How to use
+### Without ajax
+[See the controller example](https://github.com/davicotico/Codeigniter-Form-Validation-Extension/blob/master/application/controllers/Welcome.php#L7)
+
 # Class reference
 ### setSuccessMessage($text)
 Setting the success message
