@@ -100,17 +100,24 @@ Add variable on success json response (Only for ajax request)
 
 ## Helpers included
 ### setValue($field, $default = '')
-Echoes the value for input field. Use in a view file. 
+Display the value for input field. Use in a view file. 
 
 **Parameters:**
 
 * string $field - Input name
 * string $default - (Optional) Default value
-### setCheckbox($field, $value)
-Echoes the 'checked' for input type checkbox. When the value is present in form values, display "checked". Use in a view file. 
+### setChecked($field, $value)
+Display 'checked' for input type checkbox and radio button. When the value is present in form values, display "checked". Use in a view file. 
 
 **Parameters:**
 
 * string $field - Input name
 * string $value - This value is setting? .. So, Checked
 
+### setSelected($field, $value)
+Display 'selected' for input select(comobobox). When the value is present in form values, display "selected". Use in a view file. 
+
+**Parameters:**
+
+* string $field - Input name
+* string $value - This value is setting? .. So, Selected
