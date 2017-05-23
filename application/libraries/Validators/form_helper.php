@@ -6,9 +6,9 @@ if (! function_exists('setValue'))
         echo get_instance()->form_validation->getValue($field, $default);
     }
 }
-if (! function_exists('setCheckbox'))
+if (! function_exists('setChecked'))
 {
-    function setCheckbox($field, $value)
+    function setChecked($field, $value)
     {
         $val = get_instance()->form_validation->getValue($field, NULL);
         if (is_array($val))
@@ -17,6 +17,20 @@ if (! function_exists('setCheckbox'))
         } else
         {
             echo ($val==$value) ? 'checked' : '';
+        }
+    }
+}
+if (! function_exists('setCheckbox'))
+{
+    function setSelected($field, $value)
+    {
+        $val = get_instance()->form_validation->getValue($field, NULL);
+        if (is_array($val))
+        {
+            echo (in_array($value, $val)) ? 'selected' : '';
+        } else
+        {
+            echo ($val==$value) ? 'selected' : '';
         }
     }
 }

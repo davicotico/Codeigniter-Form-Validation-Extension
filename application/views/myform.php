@@ -32,13 +32,13 @@
                             </div>
                             <h4>Subscribe to:</h4>
                             <div class="checkbox">
-                                <label><input type="checkbox" name="select[]" value="1" <?php setCheckbox('select', '1') ?>> Newsletter</label>
-                                <label><input type="checkbox" name="select[]" value="2" <?php setCheckbox('select', '2') ?>> Promotions</label>
-                                <label><input type="checkbox" name="select[]" value="3" <?php setCheckbox('select', '3') ?>> Free stuff</label>
+                                <label><input type="checkbox" name="select[]" value="1" <?php setChecked('select', '1') ?>> Newsletter</label>
+                                <label><input type="checkbox" name="select[]" value="2" <?php setChecked('select', '2') ?>> Promotions</label>
+                                <label><input type="checkbox" name="select[]" value="3" <?php setChecked('select', '3') ?>> Free stuff</label>
                             </div>
                             <h4>Accept the terms?</h4>
                             <div class="checkbox">
-                                <label><input type="checkbox" name="accept" value="1" <?php setCheckbox('accept', '1') ?>> I accept</label>
+                                <label><input type="checkbox" name="accept" value="1" <?php setChecked('accept', '1') ?>> I accept</label>
                             </div>
                             <div><button type="submit" id="btnSend" class="btn btn-success">Send</button></div>
                             <?php echo form_close() ?>
