@@ -1,19 +1,17 @@
 <?php
 
+//Your functions to validate
 
-function test1($p1, $p2)
+/*
+function isSomething($value)
 {
-    echo "Test 1 {$p1}, {$p2}";
-}
-
-function isCNPJ($value)
-{
-    if (! ctype_digit($value))
-    {
-        return FALSE;
-    }
-    else
+    if ()
     {
         return TRUE;
     }
+    else
+    {
+        return FALSE;
+    }
 }
+*/

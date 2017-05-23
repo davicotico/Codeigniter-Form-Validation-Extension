@@ -9,7 +9,9 @@ class Validators extends BaseValidator
     {
         parent::__construct();
     }
-
+    /**
+     * Validation example
+     */
     public function isCEP($value)
     {
         return preg_match("/[0-9]{5,5}([- ]?[0-9]{4})?$/", $value);
