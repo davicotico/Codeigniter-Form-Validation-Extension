@@ -16,20 +16,30 @@ class MY_Form_validation extends CI_Form_validation
     protected $ajaxResponse;
     protected $template;
 
-    /**
-     * @var Validators Object extensor
-     */
-    public $ext;
-
     public function __construct($rules = array())
     {
         parent::__construct($rules);
         $this->init();
-        include 'Validators/Validators.php';
-        require_once 'Validators/form_helper.php';
-        $this->ext = new Validators($this);
+        require_once 'FormValidation/formHelper.php';
+        $this->loadFunctions();
     }
-
+    /**
+     * Load the function validators.
+     * They are called with __call
+     */
+    protected function loadFunctions()
+    {
+        include 'FormValidation/validators.php';
+    }
+    
+    public function __call($name, $arguments)
+    {
+        if (is_callable($name))
+        {
+            return call_user_func_array($name, $arguments);
+        }
+    }
+    
     /**
      * Initialize default values
      */
@@ -126,7 +136,7 @@ class MY_Form_validation extends CI_Form_validation
             $input = $this->getPostExcluding($this->excludeInputs);
             $this->CI->session->set_flashdata('FV_values', json_encode($input));
             $this->CI->session->set_flashdata('FV_message', array('type' => $msgType, 'message' => $message));
-            log_message('info', "Validation executed at MY_Form_validation.php and redirect to: {$this->redirect}");
+            log_message('debug', "Validation executed at MY_Form_validation.php and redirect to: {$this->redirect}");
             redirect($this->redirect);
         }
     }

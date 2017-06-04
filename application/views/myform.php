@@ -13,7 +13,7 @@
                         <div class="panel-heading"><h4>Register</h4></div>
                         <div class="panel-body">
                             <?php echo $message; ?>
-                            <?php echo form_open('welcome/post', array('method' => 'post', 'id' => 'frmCadastro')); ?>
+                            <?php echo form_open('formtest/post', array('method' => 'post', 'id' => 'frmCadastro')); ?>
                             <div class="form-group">
                                 <label for="username">Username</label>
                                 <input type="text" name="username" id="username" class="form-control" size="50" value="<?php setValue('username') ?>">
@@ -29,6 +29,10 @@
                             <div class="form-group">
                                 <label for="email">Email Address</label>
                                 <input type="email" name="email" id="email" class="form-control" size="50" value="<?php setValue('email') ?>">
+                            </div>
+                            <div class="form-group">
+                                <label for="zipcode">Zip Code (Brasil i.e. 99999999 or 99999-999)</label>
+                                <input type="text" name="zipcode" id="zipcode" class="form-control" maxlength="10" value="<?php setValue('zipcode') ?>">
                             </div>
                             <h4>Subscribe to:</h4>
                             <div class="checkbox">

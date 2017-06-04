@@ -20,7 +20,7 @@ if (! function_exists('setChecked'))
         }
     }
 }
-if (! function_exists('setCheckbox'))
+if (! function_exists('setSelected'))
 {
     function setSelected($field, $value)
     {
