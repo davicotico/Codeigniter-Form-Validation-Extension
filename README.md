@@ -41,6 +41,24 @@ Create the controller method: [The form controller](https://github.com/davicotic
 
 [The post controller method](https://github.com/davicotico/Codeigniter-Form-Validation-Extension/blob/master/application/controllers/Formtest.php#L23)
 
+## Extending validations
+### Create the validator function 
+Open the file FormValidation/validators.php and create your function.
+
+validators.php
+```
+/*This example is for Brasil Zip code*/
+function zipcode($value)
+{
+    return ((preg_match('/^[0-9]{5,5}([-]?[0-9]{3,3})?$/', $value))===1);
+}
+```
+Done, now you can use the function in your validation rules.
+### How to use
+```
+$this->form_validation->set_rules('zipcode', 'Zip code', 'required|zipcode', array('zipcode'=>'Escreva um cep valido'));
+```
+
 # Class reference
 ### setSuccessMessage($text)
 Setting the success message
