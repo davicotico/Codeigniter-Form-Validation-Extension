@@ -46,7 +46,7 @@ Create the controller method: [The form controller](https://github.com/davicotic
 Open the file FormValidation/validators.php and create your function.
 
 validators.php
-```
+```php
 /*This example is for Brasil Zip code*/
 function zipcode($value)
 {
@@ -55,7 +55,7 @@ function zipcode($value)
 ```
 Done, now you can use the function in your validation rules.
 ### How to use
-```
+```php
 $this->form_validation->set_rules('zipcode', 'Zip code', 'required|zipcode', array('zipcode'=>'Escreva um cep valido'));
 ```
 
