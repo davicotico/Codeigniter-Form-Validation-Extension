@@ -10,8 +10,13 @@ This is a extension library of Form_validation
 * Extends Validators (Easy and fast)
 
 ## Installation
-Copy the folder *Validators/* and the file *MY_Form_validation.php* to your Codeigniter folder *application/libraries*
-
+Copy the folder *FormValidation/* and the file *MY_Form_validation.php* to your Codeigniter folder *application/libraries*
+```
+application/
+-- libraries/
+---- FormValidation/
+---- MY_Form_validation.php
+```
 ## How to use
 ### Without ajax
 #### The Form
