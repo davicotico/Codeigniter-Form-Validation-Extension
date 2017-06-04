@@ -18,11 +18,11 @@ Copy the folder *Validators/* and the file *MY_Form_validation.php* to your Code
 
 Create a view file (using the functions to repopulate) [The Form view](https://github.com/davicotico/Codeigniter-Form-Validation-Extension/blob/master/application/views/myform.php)
 
-Create the controller method: [The Form controller method](https://github.com/davicotico/Codeigniter-Form-Validation-Extension/blob/master/application/controllers/Welcome.php#L7)
+Create the controller method: [The Form controller method](https://github.com/davicotico/Codeigniter-Form-Validation-Extension/blob/master/application/controllers/Formtest.php#L7)
 
 #### The validation
 
-Create a controller method for validate your data (and save in database) [The post controller method](https://github.com/davicotico/Codeigniter-Form-Validation-Extension/blob/master/application/controllers/Welcome.php#L23)
+Create a controller method for validate your data (and save in database) [The post controller method](https://github.com/davicotico/Codeigniter-Form-Validation-Extension/blob/master/application/controllers/Formtest.php#L23)
 ### With Ajax
 #### The Form
 
@@ -30,11 +30,11 @@ Create a controller method for validate your data (and save in database) [The po
 
 Create a view file: [The Form view](https://github.com/davicotico/Codeigniter-Form-Validation-Extension/blob/master/application/views/myformAjax.php)
 
-Create the controller method: [The form controller](https://github.com/davicotico/Codeigniter-Form-Validation-Extension/blob/master/application/controllers/Welcome.php#L16)
+Create the controller method: [The form controller](https://github.com/davicotico/Codeigniter-Form-Validation-Extension/blob/master/application/controllers/Formtest.php#L16)
 
 #### The validation
 
-[The post controller method](https://github.com/davicotico/Codeigniter-Form-Validation-Extension/blob/master/application/controllers/Welcome.php#L23)
+[The post controller method](https://github.com/davicotico/Codeigniter-Form-Validation-Extension/blob/master/application/controllers/Formtest.php#L23)
 
 # Class reference
 ### setSuccessMessage($text)
