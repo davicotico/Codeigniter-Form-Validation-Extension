@@ -182,10 +182,11 @@ class MY_Form_validation extends CI_Form_validation
     }
 
     /**
+     * Setting the message template
      * @param string $template Template string
      * @param array $typeClass (Optional) CSS Class to replace in template
      */
-    public function setTemplate($template, $typeClass = NULL)
+    public function setMessageTemplate($template, $typeClass = NULL)
     {
         $this->template['html'] = $template;
         $this->template['error'] = isset($typeClass['error']) ? $typeClass['error'] : 'error';

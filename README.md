@@ -107,8 +107,8 @@ Get the validation message
 Get Form Values (JSON string) from flashdata
 
 **Return:** string - Json string
-### setTemplate($template, $typeClass = NULL)
-Setting the template message
+### setMessageTemplate($template, $typeClass = NULL)
+Setting the message template
 
 **Parameters:**
 

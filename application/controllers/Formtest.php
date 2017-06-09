@@ -8,7 +8,7 @@ class Formtest extends CI_Controller
     {
         $this->load->library('form_validation');
         $tpl = "<div class=\"alert alert-{type}\" role=\"alert\">{message}</div>";
-        $this->form_validation->setTemplate($tpl, array('error'=>'danger'));
+        $this->form_validation->setMessageTemplate($tpl, array('error'=>'danger'));
         $data['message'] = $this->form_validation->getMessage();
         $this->form_validation->loadValues();
         $this->load->view('myform', $data);
