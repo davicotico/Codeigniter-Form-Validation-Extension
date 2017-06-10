@@ -184,13 +184,13 @@ class MY_Form_validation extends CI_Form_validation
     /**
      * Setting the message template
      * @param string $template Template string
-     * @param array $typeClass (Optional) CSS Class to replace in template
+     * @param array $classType (Optional) CSS Class to replace in template
      */
-    public function setMessageTemplate($template, $typeClass = NULL)
+    public function setMessageTemplate($template, $classType = NULL)
     {
         $this->template['html'] = $template;
-        $this->template['error'] = isset($typeClass['error']) ? $typeClass['error'] : 'error';
-        $this->template['success'] = isset($typeClass['success']) ? $typeClass['success'] : 'success';
+        $this->template['error'] = isset($classType['class-error']) ? $classType['class-error'] : 'error';
+        $this->template['success'] = isset($classType['class-success']) ? $classType['class-success'] : 'success';
     }
 
     /**
@@ -215,7 +215,7 @@ class MY_Form_validation extends CI_Form_validation
             return '';
         }
         $data['type'] = $this->template[$data['type']];
-        $str = strtr($this->template['html'], array('{type}' => $data['type'], '{message}' => $data['message']));
+        $str = strtr($this->template['html'], array('{class-type}' => $data['type'], '{message}' => $data['message']));
         return $str;
     }
 

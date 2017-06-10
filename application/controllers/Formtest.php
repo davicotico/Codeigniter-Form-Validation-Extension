@@ -7,8 +7,8 @@ class Formtest extends CI_Controller
     public function index()
     {
         $this->load->library('form_validation');
-        $tpl = "<div class=\"alert alert-{type}\" role=\"alert\">{message}</div>";
-        $this->form_validation->setMessageTemplate($tpl, array('error'=>'danger'));
+        $tpl = "<div class=\"alert {class-type}\" role=\"alert\">{message}</div>";
+        $this->form_validation->setMessageTemplate($tpl, array('class-error'=>'alert-danger', 'class-success'=>'alert-success'));
         $data['message'] = $this->form_validation->getMessage();
         $this->form_validation->loadValues();
         $this->load->view('myform', $data);
