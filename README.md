@@ -107,13 +107,13 @@ Get the validation message
 Get Form Values (JSON string) from flashdata
 
 **Return:** string - Json string
-### setMessageTemplate($template, $typeClass = NULL)
+### setMessageTemplate($template, $classType = NULL)
 Setting the message template
 
 **Parameters:**
 
 * string $template - Template string
-* array $typeClass - (Optional) CSS Class to replace in template
+* array $classType - (Optional) CSS Class to replace in template. Examples: ['class-error'=>'alert-danger', 'class-success'=>'alert-success']. Defaults: ['class-error'=>'error', 'class-success'=>'success']
 
 ### addSuccessJsonVar($key, $value)
 Add variable on success json response (Only for ajax request)
