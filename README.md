@@ -11,7 +11,7 @@ This is a extension library of Form_validation
 
 ## Installation
 
-1. Download the [latest release](https://github.com/davicotico/Codeigniter-Form-Validation-Extension/archive/v1.0.0.zip)
+1. Download the [latest release](https://github.com/davicotico/Codeigniter-Form-Validation-Extension/archive/v1.0.1.zip)
 2. Copy the folder *FormValidation/* and the file *MY_Form_validation.php* to your Codeigniter folder *application/libraries*
 ```
 application/
