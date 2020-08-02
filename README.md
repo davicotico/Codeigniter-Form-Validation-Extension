@@ -1,4 +1,4 @@
-## Officialy DEPRECATED
+## Officially DEPRECATED
 Reason: There is Codeigniter 4 with a perfect validation library :)
 
 # Codeigniter Form Validation Extension
