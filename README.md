@@ -1,3 +1,6 @@
+## Officialy DEPRECATED
+Reason: There is Codeigniter 4 with a perfect validation library :)
+
 # Codeigniter Form Validation Extension
 This is a extension library of Form_validation
 ## Features
